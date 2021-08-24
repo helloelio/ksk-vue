@@ -6,10 +6,10 @@
       @change="$emit('sortByName', sortingByName)"
     >
       <option selected disabled value="">Sorting</option>
-      <option value="Sort by Invoice number: ascending">
+      <option value="ascending">
         Sort by Invoice number: ascending
       </option>
-      <option value="Sort by Invoice number: descending">
+      <option value="descending">
         Sort by Invoice number: descending
       </option>
     </select>
@@ -33,7 +33,7 @@ export default {
   align-items: center;
   padding: 20px 0;
   width: 100%;
-  box-shadow: 0px 4px 4px #ebebeb;
+  box-shadow: 0 4px 4px #ebebeb;
 }
 
 #sort-select {

@@ -30,25 +30,31 @@
 
 <script>
 
+import { mapState } from 'vuex';
+
 export default {
   name: 'CreateModal',
   data() {
     return {
-      optionValues: ['RUED', 'RUEX', 'RUSG'],
       cardName: '',
       cardType: '',
     };
   },
+  computed: {
+    ...mapState([
+      'optionValues',
+    ]),
+  },
   methods: {
     createCardItem() {
       const currentDate = new Date();
-      const formatedDate = `${currentDate.getDate()}
+      const formattedDate = `${currentDate.getDate()}
       - ${(currentDate.getMonth() + 1)}
       - ${currentDate.getFullYear()}`;
       const cardItem = {
         id: this.$store.state.counter,
         name: this.cardName,
-        date: formatedDate,
+        date: formattedDate,
         type: this.cardType,
       };
       if (this.cardName === '' || this.cardType === '') {

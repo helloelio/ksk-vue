@@ -8,13 +8,10 @@
     <EditCardModal
       @edit-card-item="editCardItem"
       @close-edit-modal="closeEditModal"
-      :count="card"
     />
     <div class="container">
       <Main
         @open-create-modal="openCreateModal"
-        :cards="cards"
-        :card="card"
       />
     </div>
   </div>
@@ -28,7 +25,6 @@ import CreateCardModal from './components/CreateCardModal.vue';
 import EditCardModal from './components/main/EditCardModal.vue';
 
 export default {
-  props: ['card'],
   components: {
     Header,
     Main,

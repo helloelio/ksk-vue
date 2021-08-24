@@ -1,16 +1,18 @@
 <template>
   <header class="header">
-    <h1 class="header__title"> {{ title }} </h1>
+    <h1 class="header__title"> {{ headerTitle }} </h1>
   </header>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'Header',
-  data() {
-    return {
-      title: 'Тестовое задание',
-    };
+  computed: {
+    ...mapState([
+      'headerTitle',
+    ]),
   },
 };
 </script>
@@ -35,7 +37,7 @@ export default {
 }
 
 .header__title {
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
   font-size: 2.25em;
   color: #ffffff;
   margin-left: 110px;

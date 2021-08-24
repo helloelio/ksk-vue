@@ -6,7 +6,7 @@
     </div>
     <div class="right-side">
       <div class="right-side-header">
-        <SortingCards @sortByName="updateSortingName"/>
+        <SortingCards @sortByName="sortingCards"/>
         <div class="routes">
           <router-link to="/tables" class="nav-link">
             <button class="nav-button nav-table">
@@ -51,7 +51,6 @@ export default {
       this.$store.commit('DELETE_CARD', idToDelete);
     },
     checkId(item) {
-      console.log(item.id);
       this.openEditModal();
       this.$store.commit('EDIT_CARD', item);
     },
@@ -61,11 +60,12 @@ export default {
     },
     updateFilterName(newFilterName) {
       this.filterByName = newFilterName;
-      this.$store.commit('FILTER_CARD', this.filterByName);
+      this.$store.commit('FILTER_CARDS', this.filterByName);
       //  fix filter
     },
-    updateSortingName(sortByName) {
+    sortingCards(sortByName) {
       this.sortingByName = sortByName;
+      this.$store.commit('SORTING_CARDS', this.sortingByName);
     },
   },
 };

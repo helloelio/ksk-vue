@@ -39,11 +39,17 @@
   </div>
 </template>
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'EditCardModal',
+  computed: {
+    ...mapState([
+      'optionValues',
+    ]),
+  },
   data() {
     return {
-      optionValues: ['RUED', 'RUEX', 'RUSG'],
       cardName: '',
       cardType: '',
     };
