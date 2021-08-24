@@ -1,73 +1,63 @@
 <template>
   <div id="app">
-    <Header></Header>
+    <Header/>
     <CreateCardModal
       @createCardItem="addCardItem"
-      @close-create-modal="closeCreateModal"/>
+      @close-create-modal="closeCreateModal"
+    />
     <EditCardModal
-      @edit-card-item='editCardItem'
+      @edit-card-item="editCardItem"
       @close-edit-modal="closeEditModal"
-      :counter="this.counter"
+      :count="card"
     />
     <div class="container">
       <Main
         @open-create-modal="openCreateModal"
-        @open-edit-modal="openEditModal"
-        @delete-card="deleteCard"
-        :cards="cards"/>
+        :cards="cards"
+        :card="card"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
 import Header from './components/Header.vue';
 import Main from './components/Main.vue';
 import CreateCardModal from './components/CreateCardModal.vue';
 import EditCardModal from './components/main/EditCardModal.vue';
 
 export default {
+  props: ['card'],
   components: {
     Header,
     Main,
     CreateCardModal,
     EditCardModal,
   },
+  computed: {
+    ...mapState([
+      'cards',
+    ]),
+  },
   data() {
     return {
-      counter: 0,
-      cards: [],
       filterName: '',
     };
   },
   methods: {
     addCardItem(cardItem) {
-      this.cards.push(cardItem);
+      this.$store.commit('ADD_CARD', cardItem);
       this.closeCreateModal();
-      this.counter += 1;
     },
     editCardItem(editCardItem) {
-      /* eslint-disable */
-      this.cards.forEach((card) => {
-        if (card.id === editCardItem.id) {
-          card.name = editCardItem.name;
-          card.type = editCardItem.type;
-        } else {
-          return;
-        }
-      });
+      this.$store.commit('EDIT_CARD', editCardItem);
       this.closeEditModal();
-    },
-    deleteCard(idToDelete) {
-      this.cards = this.cards.filter((card) => card.id !== idToDelete);
     },
     // filters
     filterByName() {
     },
     // sorting
-    openEditModal() {
-      document.querySelector('.modal-edit').classList.remove('hidden');
-      document.querySelector('.modal-edit').classList.add('shown-edit-modal');
-    },
     openCreateModal() {
       document.querySelector('.modal').classList.remove('hidden');
       document.querySelector('.modal').classList.add('shown-create-modal');
@@ -118,7 +108,6 @@ export default {
 
 .shown-edit-modal {
   display: flex !important;
-
 }
 
 .shownTable {
@@ -165,7 +154,7 @@ button {
 input {
   margin-bottom: 17px;
   padding: 5px;
-  border: 1px solid #D9D9D9;
+  border: 1px solid #d9d9d9;
   border-radius: 2px;
 }
 

@@ -1,13 +1,14 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import cardItem from '../components/main/cards/CardItem.vue';
-import cardItemTable from '../components/main/cards/cardItemTable.vue';
+import Cards from '../components/main/cards/Cards.vue';
+import cardsTabled from '../components/main/cards/CardsTabled.vue';
 
 Vue.use(VueRouter);
 
 const routes = [
-  { path: '/widgets', component: cardItem },
-  { path: '/tables', component: cardItemTable },
+  { path: '/', redirect: '/widgets' },
+  { path: '/widgets', component: Cards },
+  { path: '/tables', component: cardsTabled },
 ];
 
 const router = new VueRouter({

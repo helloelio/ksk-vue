@@ -20,24 +20,26 @@
             v-for="value in optionValues"
             :key="value"
             :value="value"
-
           > {{ value }}
           </option>
         </select>
       </form>
-      <button
-        @click="editCardItem"
-        class="edit-card"
-      >Редактировать
-      </button>
+      <div class="modal-buttons">
+        <button
+          @click="editCardItem"
+          class="edit-card"
+        >Редактировать
+        </button>
+        <button @click="$emit('close-edit-modal')" class="close-modal">
+          Отмена
+        </button>
+      </div>
     </div>
-    <span class="close" @click="$emit('close-edit-modal')">×</span>
+
   </div>
 </template>
-
 <script>
 export default {
-  props: ['counter'],
   name: 'EditCardModal',
   data() {
     return {
@@ -51,7 +53,6 @@ export default {
       const editedCardItem = {
         name: this.cardName,
         type: this.cardType,
-        id: this.counter,
       };
       this.$emit('edit-card-item', editedCardItem);
       this.cardName = '';
@@ -102,19 +103,33 @@ export default {
   border-radius: 4px;
   background-color: #4943cd;
   color: white;
-  margin: 0 auto;
 }
 
 .edit-card:hover {
   background: #3b36a5;
 }
 
-.close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 2.5em;
-  color: white;
-  cursor: pointer;
+.edit-card-form {
+  margin-bottom: 10px;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.close-modal {
+  font-size: 1.2em;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: white;
+  color: black;
+  border: 1px solid white;
+  transition: border .2s ease;
+}
+
+.close-modal:hover {
+  border: 1px solid;
 }
 </style>

@@ -11,26 +11,20 @@
           v-model="cardName"
         />
         <label for="create-select">Тип заказа </label>
-        <select
-          id="create-select"
-          v-model="cardType"
-        >
+        <select id="create-select" v-model="cardType">
           <option disabled value="">Выберите тип:</option>
-          <option
-            v-for="value in optionValues"
-            :key="value"
-            :value="value"
-          > {{ value }}
+          <option v-for="value in optionValues" :key="value" :value="value">
+            {{ value }}
           </option>
         </select>
       </form>
-      <button
-        @click="createCardItem"
-        class="create-card"
-      >Добавить
-      </button>
+      <div class="modal-buttons">
+        <button @click="createCardItem" class="create-card">Добавить</button>
+        <button @click="$emit('close-create-modal')" class="close-modal">
+          Отмена
+        </button>
+      </div>
     </div>
-    <span class="close" @click="$emit('close-create-modal')">×</span>
   </div>
 </template>
 
@@ -43,7 +37,6 @@ export default {
       optionValues: ['RUED', 'RUEX', 'RUSG'],
       cardName: '',
       cardType: '',
-      counter: 1,
     };
   },
   methods: {
@@ -53,7 +46,7 @@ export default {
       - ${(currentDate.getMonth() + 1)}
       - ${currentDate.getFullYear()}`;
       const cardItem = {
-        id: this.counter,
+        id: this.$store.state.counter,
         name: this.cardName,
         date: formatedDate,
         type: this.cardType,
@@ -66,7 +59,7 @@ export default {
         this.cardName = '';
         this.cardType = '';
       }
-      this.counter++;
+      this.$store.commit('increment');
     },
   },
 };
@@ -103,8 +96,18 @@ export default {
   padding: 25px 0 20px 0;
 }
 
+.create-new-card {
+  margin-bottom: 10px;
+}
+
 #create-select {
   color: #a5a5a5;
+}
+
+.modal-buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .create-card {
@@ -113,19 +116,23 @@ export default {
   border-radius: 4px;
   background-color: #4943cd;
   color: white;
-  margin: 0 auto;
 }
 
 .create-card:hover {
   background: #3b36a5;
 }
 
-.close {
-  position: absolute;
-  top: 20px;
-  right: 30px;
-  font-size: 2.5em;
-  color: white;
-  cursor: pointer;
+.close-modal {
+  font-size: 1.2em;
+  padding: 10px;
+  border-radius: 4px;
+  background-color: white;
+  color: black;
+  border: 1px solid white;
+  transition: border .2s ease;
+}
+
+.close-modal:hover {
+  border: 1px solid;
 }
 </style>

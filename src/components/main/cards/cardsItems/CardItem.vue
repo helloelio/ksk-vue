@@ -1,22 +1,22 @@
 <template>
-  <div class="card">
+  <div class='card' :class="String(card.id)">
     <div class="card__header">
       <div class="card__name">{{ card.name }}</div>
       <div class="card__buttons">
-        <div class="card-buttons-menu" :class="{shown: this.active}">
-          <button class="edit-btn"
-                  @click="$emit('open-edit-modal', card.id), setClass()">
-            <img src="../../../assets/edit-icon.svg" alt="edit icon"
-            >
+        <div class="card-buttons-menu" :class="{ shown: this.active }">
+          <button
+            class="edit-btn"
+            @click="$emit('open-edit-modal', card), setClass()">
+            <img src="../../../../assets/edit-icon.svg" alt="edit icon"/>
             <span>редактировать</span>
           </button>
           <button class="delete-btn" @click="$emit('delete-card', card.id)">
-            <img src="../../../assets/delete-icon.svg" alt="close icon">
+            <img src="../../../../assets/delete-icon.svg" alt="close icon"/>
             <span>удалить</span>
           </button>
         </div>
         <button class="menu-btn" @click="setClass">
-          <img src="../../../assets/menu-icon-widget.svg" alt="menu icon">
+          <img src="../../../../assets/menu-icon-widget.svg" alt="menu icon"/>
         </button>
       </div>
     </div>
@@ -53,7 +53,7 @@ export default {
 
 .card {
   display: inline-block;
-  background: #F6FAFB;
+  background: #f6fafb;
   box-shadow: 0 4px 12px #ebebeb;
   border-radius: 3px;
   height: 300px;
@@ -62,7 +62,7 @@ export default {
 
 .card__header {
   position: relative;
-  background: rgba(237, 232, 245, 0.5);;
+  background: rgba(237, 232, 245, 0.5);
   padding: 10px 20px;
   display: flex;
   justify-content: space-between;
@@ -76,7 +76,7 @@ export default {
 
 /* card body */
 .card__body {
-  background-color: #F6FAFB;
+  background-color: #f6fafb;
   font-size: 0.875em;
   font-weight: 400;
   padding: 0 20px;

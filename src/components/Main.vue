@@ -9,44 +9,20 @@
         <SortingCards @sortByName="updateSortingName"/>
         <div class="routes">
           <router-link to="/tables" class="nav-link">
-            <button class="nav-button nav-table" @click="setPathToTables">
-              <img src="../assets/table-icon.svg" alt=""/>
+            <button class="nav-button nav-table">
+              <img src="../assets/table-icon.svg" alt="table icon"/>
             </button>
           </router-link>
           <router-link to="/widgets" class="nav-link">
-            <button class="nav-button nav-widgets" @click="setPathToWidgets">
-              <img src="../assets/widget-icon.svg" alt=""/>
+            <button class="nav-button nav-widgets">
+              <img src="../assets/widget-icon.svg" alt="widget icon"/>
             </button>
           </router-link>
         </div>
       </div>
-      <div class="cards" v-if="path === 'widgets'">
-        <router-view
-          v-for="card in cards"
-          :key="card.id"
-          :card="card"
-          @delete-card="$emit('delete-card', card.id)"
-          @open-edit-modal="$emit('open-edit-modal', card.id)"
-        />
-      </div>
-      <div class="cards-tabled" v-if="path === 'tables' && cards.length > 0">
-        <table>
-          <tr class="table-head">
-            <th>ID</th>
-            <th>Номер накладной</th>
-            <th>Тип заказа</th>
-            <th>Дата создания</th>
-            <th></th>
-          </tr>
-          <router-view
-            v-for="card in cards"
-            :key="card.id"
-            :card="card"
-            @delete-card="$emit('delete-card', card.id)"
-            @open-edit-modal="$emit('open-edit-modal', card.id)"
-          />
-        </table>
-      </div>
+      <transition name="fade">
+        <router-view @delete-card="deleteCard" @open-edit-modal="checkId"/>
+      </transition>
     </div>
   </main>
 </template>
@@ -57,7 +33,6 @@ import SortingCards from './main/SortingCards.vue';
 import FilterCards from './main/FilterCards.vue';
 
 export default {
-  props: ['cards'],
   components: {
     FilterCards,
     SortingCards,
@@ -68,26 +43,33 @@ export default {
       filterByName: '',
       filteredByName: [],
       sortingByName: '',
-      path: 'widgets',
+      show: true,
     };
   },
   methods: {
+    deleteCard(idToDelete) {
+      this.$store.commit('DELETE_CARD', idToDelete);
+    },
+    checkId(item) {
+      console.log(item.id);
+      this.openEditModal();
+      this.$store.commit('EDIT_CARD', item);
+    },
+    openEditModal() {
+      document.querySelector('.modal-edit').classList.remove('hidden');
+      document.querySelector('.modal-edit').classList.add('shown-edit-modal');
+    },
     updateFilterName(newFilterName) {
       this.filterByName = newFilterName;
-      this.filteredByName = this.cards.filter((card) => card.name === newFilterName);
+      this.$store.commit('FILTER_CARD', this.filterByName);
       //  fix filter
     },
     updateSortingName(sortByName) {
       this.sortingByName = sortByName;
     },
-    setPathToWidgets() {
-      this.path = 'widgets';
-    },
-    setPathToTables() {
-      this.path = 'tables';
-    },
   },
 };
+
 </script>
 
 <style scoped>
@@ -96,21 +78,6 @@ export default {
   grid-template-columns: 1fr 1fr 1fr;
   gap: 20px;
   margin-top: 20px;
-}
-
-.cards-tabled {
-  width: 100%;
-  margin-top: 20px;
-}
-
-.table-head {
-  background-color: #e6e6e6;
-  color: black;
-}
-
-.table-head > th {
-  padding: 15px;
-  font-weight: bold;
 }
 
 .nav-button {
@@ -138,5 +105,14 @@ main {
   .cards {
     grid-template-columns: 1fr 1fr;
   }
+}
+
+.fade-enter-active {
+  transition: opacity 1s;
+}
+
+.fade-enter /* .fade-leave-active до версии 2.1.8 */
+{
+  opacity: 0;
 }
 </style>

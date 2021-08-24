@@ -8,7 +8,7 @@
       <div class="card__buttons-table" :class="{bordered: active}">
         <div class="card-buttons-menu-table" :class="{shownTable: active}">
           <button class="edit-button"
-                  @click="$emit('open-edit-modal', card.id),setClass()">
+                  @click="$emit('open-edit-modal', card), setClass()">
             <svg fill="none" width="12px" height="12px"
                  xmlns="http://www.w3.org/2000/svg">
               <g clip-path="url(#a)" fill="#647A8C">
@@ -51,7 +51,7 @@
           </button>
         </div>
         <button class="menu-button" @click="setClass">
-          <img src="../../../assets/menu-icon.svg" alt="menu icon">
+          <img src="../../../../assets/menu-icon.svg" alt="menu icon">
         </button>
       </div>
     </td>
