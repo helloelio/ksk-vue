@@ -20,14 +20,14 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 import cardItemTable from './cardsItems/cardItemTable.vue';
 
 export default {
   components: { cardItemTable },
   name: 'CardsTabled',
   computed: {
-    ...mapState([
+    ...mapGetters([
       'cards',
     ]),
   },

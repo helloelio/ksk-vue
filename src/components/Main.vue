@@ -61,7 +61,6 @@ export default {
     updateFilterName(newFilterName) {
       this.filterByName = newFilterName;
       this.$store.commit('FILTER_CARDS', this.filterByName);
-      //  fix filter
     },
     sortingCards(sortByName) {
       this.sortingByName = sortByName;

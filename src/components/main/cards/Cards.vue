@@ -11,14 +11,14 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 import CardItem from './cardsItems/CardItem.vue';
 
 export default {
   name: 'Cards',
   components: { CardItem },
   computed: {
-    ...mapState([
+    ...mapGetters([
       'cards',
     ]),
   },

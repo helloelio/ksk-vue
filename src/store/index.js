@@ -11,7 +11,11 @@ export default new Vuex.Store({
     headerTitle: 'Тестовое задание',
     optionValues: ['RUED', 'RUEX', 'RUSG'],
     cards: [],
+    filteredCards: [],
     counter: 1,
+  },
+  getters: {
+    cards: (state) => state.cards,
   },
   mutations: {
     /* eslint-disable */
@@ -24,14 +28,16 @@ export default new Vuex.Store({
         card.type = payload.type;
       }
     }),
-    [ FILTER_CARDS ]: (state, payload) => state.cards.filter((card) => card.name === payload),
+    [ FILTER_CARDS ]: (state, payload) => state.cards.filter((card) => {
+      const value = card.name.toLowerCase();
+      const filterInput = payload.toLowerCase();
+      if (value.includes(filterInput) && payload !== '') {
+        state.filteredCards.push(card);
+      }
+    }),
     [ SORTING_CARDS ]: (state, payload) => state.cards = state.cards.sort((a, b) => {
-      if (payload === 'ascending') {
-        if (a.name > b.name) return 1;
-      }
-      if (payload === 'descending') {
-        if (a.name < b.name) return 1;
-      }
+      if (payload === 'ascending') return a.name > b.name ? 1 : -1;
+      if (payload === 'descending') return a.name < b.name ? 1 : -1;
     }),
     increment(state) {
       state.counter += 1;
