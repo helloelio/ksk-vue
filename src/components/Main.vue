@@ -6,7 +6,7 @@
     </div>
     <div class="right-side">
       <div class="right-side-header">
-        <SortingCards @sortByName="sortingCards"/>
+        <SortingCards/>
         <div class="routes">
           <router-link to="/tables" class="nav-link">
             <button class="nav-button nav-table">
@@ -38,24 +38,14 @@ export default {
     SortingCards,
     AddButton,
   },
-  data() {
-    return {
-      sortingByName: '',
-      show: true,
-    };
-  },
-
   methods: {
     deleteCard(idToDelete) {
       this.$store.commit('DELETE_CARD', idToDelete);
     },
     checkId(item) {
+      console.log(item.id);
       this.openEditModal();
       this.$store.commit('EDIT_CARD', item);
-    },
-    sortingCards(sortByName) {
-      this.sortingByName = sortByName;
-      this.$store.commit('SORTING_CARDS', this.sortingByName);
     },
     openEditModal() {
       document.querySelector('.modal-edit').classList.remove('hidden');
@@ -67,12 +57,6 @@ export default {
 </script>
 
 <style scoped>
-.cards {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  gap: 20px;
-  margin-top: 20px;
-}
 
 .nav-button {
   width: 40px;
@@ -93,12 +77,6 @@ export default {
 main {
   display: grid;
   grid-template-columns: auto 1fr;
-}
-
-@media only screen and (max-width: 1200px) {
-  .cards {
-    grid-template-columns: 1fr 1fr;
-  }
 }
 
 .fade-enter-active {

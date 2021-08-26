@@ -18,7 +18,6 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
 import Header from './components/Header.vue';
 import Main from './components/Main.vue';
 import CreateCardModal from './components/CreateCardModal.vue';
@@ -30,11 +29,6 @@ export default {
     Main,
     CreateCardModal,
     EditCardModal,
-  },
-  computed: {
-    ...mapState([
-      'cards',
-    ]),
   },
   data() {
     return {
@@ -50,10 +44,6 @@ export default {
       this.$store.commit('EDIT_CARD', editCardItem);
       this.closeEditModal();
     },
-    // filters
-    filterByName() {
-    },
-    // sorting
     openCreateModal() {
       document.querySelector('.modal').classList.remove('hidden');
       document.querySelector('.modal').classList.add('shown-create-modal');
@@ -65,13 +55,6 @@ export default {
     closeEditModal() {
       document.querySelector('.modal-edit').classList.remove('shown-edit-modal');
       document.querySelector('.modal-edit').classList.add('hidden');
-    },
-    //  updates
-    updateCardName(newCardName) {
-      this.cardName = newCardName.name;
-    },
-    updateCardType(newCardType) {
-      this.cardType = newCardType.type;
     },
   },
 };

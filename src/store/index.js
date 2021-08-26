@@ -18,24 +18,41 @@ export default new Vuex.Store({
   getters: {
     /* eslint-disable */
     cards: (state) => state.cards,
+    optionValues: (state) => state.optionValues,
     filterByName: (state) => state.filterByName,
     filteredCards: (state) => state.filteredCards,
   },
   mutations: {
     /* eslint-disable */
     [ ADD_CARD ]: (state, payload) => state.cards.push(payload),
-    [ DELETE_CARD ]: (state, payload) => state.cards = state.cards.filter((card) => card.id !== payload),
-    [ SORTING_CARDS ]: (state, payload) => state.cards = state.cards.sort((a, b) => {
-      if (payload === 'ascending') return a.name > b.name ? 1 : -1;
-      if (payload === 'descending') return a.name < b.name ? 1 : -1;
-    }),
+    [ DELETE_CARD ]: (state, payload) => {
+      if (state.filterByName === '') {
+        state.cards = state.cards.filter((card) => card.id !== payload);
+      } else {
+        state.cards = state.cards.filter((card) => card.id !== payload);
+        state.filteredCards = state.filteredCards.filter((card) => card.id !== payload);
+      }
+    },
+    [ SORTING_CARDS ]: (state, payload) => {
+      if (state.filterByName === '') {
+        state.cards = state.cards.sort((a, b) => {
+          if (payload === 'ascending') return a.name > b.name ? 1 : -1;
+          if (payload === 'descending') return a.name < b.name ? 1 : -1;
+        });
+      } else {
+        state.filteredCards = state.filteredCards.sort((a, b) => {
+          if (payload === 'ascending') return a.name > b.name ? 1 : -1;
+          if (payload === 'descending') return a.name < b.name ? 1 : -1;
+        });
+      }
+    },
     [ FILTER_CARDS ]: (state, payload) => {
       state.filterByName = payload;
       state.filteredCards = state.cards.filter((card) => card.name.toLowerCase().includes(payload.toLowerCase()));
     },
     [ EDIT_CARD ]: (state, payload) => state.cards.forEach((card) => {
       if (card.id === payload.id) {
-        console.log(card.name, payload.name);
+        console.log('a');
         card.name = payload.name;
         card.type = payload.type;
       }
@@ -44,8 +61,5 @@ export default new Vuex.Store({
       state.counter += 1;
     },
   },
-  actions: {},
-  modules: {},
+});
 
-})
-;

@@ -39,12 +39,12 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'EditCardModal',
   computed: {
-    ...mapState([
+    ...mapGetters([
       'optionValues',
     ]),
   },
@@ -59,8 +59,10 @@ export default {
       const editedCardItem = {
         name: this.cardName,
         type: this.cardType,
+        id: this.$store.state.counter,
       };
-      this.$emit('edit-card-item', editedCardItem);
+      console.log(editedCardItem);
+      this.$store.commit('EDIT_CARD', editedCardItem);
       this.cardName = '';
       this.cardType = '';
     },

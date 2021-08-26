@@ -2,8 +2,7 @@
   <div class="card__sort">
     <select
       id="sort-select"
-      v-model="sortingByName"
-      @change="$emit('sortByName', sortingByName)"
+      @change="sortingCards"
     >
       <option selected disabled value="">Sorting</option>
       <option value="ascending">
@@ -19,10 +18,10 @@
 <script>
 export default {
   name: 'SortingCards',
-  data() {
-    return {
-      sortingByName: '',
-    };
+  methods: {
+    sortingCards(event) {
+      this.$store.commit('SORTING_CARDS', event.target.value);
+    },
   },
 };
 </script>
