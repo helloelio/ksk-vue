@@ -23,7 +23,6 @@ export default new Vuex.Store({
     filteredCards: (state) => state.filteredCards,
   },
   mutations: {
-    /* eslint-disable */
     [ ADD_CARD ]: (state, payload) => state.cards.push(payload),
     [ DELETE_CARD ]: (state, payload) => {
       if (state.filterByName === '') {

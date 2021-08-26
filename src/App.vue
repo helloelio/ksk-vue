@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header/>
+    <Header />
     <CreateCardModal
       @createCardItem="addCardItem"
       @close-create-modal="closeCreateModal"
@@ -10,9 +10,7 @@
       @close-edit-modal="closeEditModal"
     />
     <div class="container">
-      <Main
-        @open-create-modal="openCreateModal"
-      />
+      <Main @open-create-modal="openCreateModal" />
     </div>
   </div>
 </template>

@@ -9,7 +9,7 @@
         <th></th>
       </tr>
       <cardItemTable
-        v-for="card in cards"
+        v-for="card in filterByName === '' ? cards : filteredCards"
         :key="card.id"
         :card="card"
         @open-edit-modal="$emit('open-edit-modal', card.id)"
@@ -28,7 +28,7 @@ export default {
   name: 'CardsTabled',
   computed: {
     ...mapGetters([
-      'cards', 'filteredCards',
+      'cards', 'filteredCards', 'filterByName',
     ]),
   },
 };
