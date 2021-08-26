@@ -2,7 +2,7 @@
   <main class="main">
     <div class="left-side">
       <AddButton @open-create-modal="$emit('open-create-modal')"/>
-      <FilterCards @filter-name="updateFilterName"/>
+      <FilterCards/>
     </div>
     <div class="right-side">
       <div class="right-side-header">
@@ -40,12 +40,11 @@ export default {
   },
   data() {
     return {
-      filterByName: '',
-      filteredByName: [],
       sortingByName: '',
       show: true,
     };
   },
+
   methods: {
     deleteCard(idToDelete) {
       this.$store.commit('DELETE_CARD', idToDelete);
@@ -54,17 +53,13 @@ export default {
       this.openEditModal();
       this.$store.commit('EDIT_CARD', item);
     },
-    openEditModal() {
-      document.querySelector('.modal-edit').classList.remove('hidden');
-      document.querySelector('.modal-edit').classList.add('shown-edit-modal');
-    },
-    updateFilterName(newFilterName) {
-      this.filterByName = newFilterName;
-      this.$store.commit('FILTER_CARDS', this.filterByName);
-    },
     sortingCards(sortByName) {
       this.sortingByName = sortByName;
       this.$store.commit('SORTING_CARDS', this.sortingByName);
+    },
+    openEditModal() {
+      document.querySelector('.modal-edit').classList.remove('hidden');
+      document.querySelector('.modal-edit').classList.add('shown-edit-modal');
     },
   },
 };

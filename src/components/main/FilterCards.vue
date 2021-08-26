@@ -7,20 +7,25 @@
         id="filter-invoice-number"
         type="text"
         placeholder="Enter value"
-        v-model="filterByName"
-        @input="$emit('filter-name', filterByName )"
+        v-model="filterValue"
       />
     </form>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'FilterCards',
-  data() {
-    return {
-      filterByName: '',
-    };
+  computed: {
+    filterValue: {
+      get() {
+        return this.$store.state.filterByName;
+      },
+      set(value) {
+        this.$store.commit('FILTER_CARDS', value);
+      },
+    },
   },
 };
 </script>

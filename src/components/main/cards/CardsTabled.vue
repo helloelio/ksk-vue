@@ -28,7 +28,7 @@ export default {
   name: 'CardsTabled',
   computed: {
     ...mapGetters([
-      'cards',
+      'cards', 'filteredCards',
     ]),
   },
 };
