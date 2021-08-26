@@ -18,6 +18,7 @@ export default new Vuex.Store({
   getters: {
     /* eslint-disable */
     cards: (state) => state.cards,
+    headerTitle: (state) => state.headerTitle,
     optionValues: (state) => state.optionValues,
     filterByName: (state) => state.filterByName,
     filteredCards: (state) => state.filteredCards,

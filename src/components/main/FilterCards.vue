@@ -1,6 +1,8 @@
 <template>
   <div class="card__filter">
-    <label class="form__title" for="form">Filters</label>
+    <label
+      class="form__title"
+      for="form">Filters</label>
     <form id="form" action="#">
       <label for="filter-invoice-number">Invoice number</label>
       <input

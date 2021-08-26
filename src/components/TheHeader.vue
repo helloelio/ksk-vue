@@ -5,12 +5,12 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   name: 'Header',
   computed: {
-    ...mapState([
+    ...mapGetters([
       'headerTitle',
     ]),
   },

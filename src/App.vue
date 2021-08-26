@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <Header/>
     <CreateCardModal
       @createCardItem="addCardItem"
       @close-create-modal="closeCreateModal"
@@ -10,16 +10,16 @@
       @close-edit-modal="closeEditModal"
     />
     <div class="container">
-      <Main @open-create-modal="openCreateModal" />
+      <Main @open-create-modal="openCreateModal"/>
     </div>
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue';
-import Main from './components/Main.vue';
+import Header from './components/TheHeader.vue';
+import Main from './components/TheMain.vue';
 import CreateCardModal from './components/CreateCardModal.vue';
-import EditCardModal from './components/main/EditCardModal.vue';
+import EditCardModal from './components/EditCardModal.vue';
 
 export default {
   components: {
@@ -211,7 +211,7 @@ table {
   .right-side {
     margin: 0;
   }
-  .cards__item {
+  .cards {
     width: 300px;
   }
   .card__create {

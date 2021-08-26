@@ -1,8 +1,13 @@
 <template>
   <div class="card__create">
     <div class="card__button">
-      <button @click="$emit('open-create-modal')" class="add-button">
-        <img src="../../assets/plus.svg" alt="plus icon">Добавить
+      <button
+        class="add-button"
+        @click="$emit('open-create-modal')"
+      ><img
+        src="../../assets/plus.svg"
+        alt="plus icon"
+      >Добавить
       </button>
     </div>
   </div>

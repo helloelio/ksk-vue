@@ -1,23 +1,36 @@
 <template>
-  <div class="card" :class="String(card.id)">
+  <div
+    class="card"
+    :class="String(card.id)">
     <div class="card__header">
       <div class="card__name">{{ card.name }}</div>
       <div class="card__buttons">
-        <div class="card-buttons-menu" :class="{ shown: this.active }">
+        <div
+          class="card-buttons-menu"
+          :class="{ shown: this.active }">
           <button
             class="edit-btn"
-            @click="$emit('open-edit-modal', card), setClass()"
-          >
-            <img src="../../../../assets/edit-icon.svg" alt="edit icon" />
+            @click="$emit('open-edit-modal', card), setClass()">
+            <img
+              src="../../../../assets/edit-icon.svg"
+              alt="edit icon"/>
             <span>редактировать</span>
           </button>
-          <button class="delete-btn" @click="$emit('delete-card', card.id)">
-            <img src="../../../../assets/delete-icon.svg" alt="close icon" />
+          <button
+            class="delete-btn"
+            @click="$emit('delete-card', card.id)">
+            <img
+              src="../../../../assets/delete-icon.svg"
+              alt="close icon"/>
             <span>удалить</span>
           </button>
         </div>
-        <button class="menu-btn" @click="setClass">
-          <img src="../../../../assets/menu-icon-widget.svg" alt="menu icon" />
+        <button
+          class="menu-btn"
+          @click="setClass">
+          <img
+            src="../../../../assets/menu-icon-widget.svg"
+            alt="menu icon"/>
         </button>
       </div>
     </div>
@@ -31,7 +44,9 @@
 
 <script>
 export default {
-  props: ['card'],
+  props: {
+    card: Object,
+  },
   name: 'CardItem',
   data() {
     return {

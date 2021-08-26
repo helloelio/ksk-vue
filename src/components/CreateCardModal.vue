@@ -2,7 +2,9 @@
   <div class="modal hidden">
     <div class="modal__content">
       <div class="modal__title">Добавление</div>
-      <form action="#" class="create-new-card">
+      <form
+        action="#"
+        class="create-new-card">
         <label for="card-number">Номер накладной </label>
         <input
           id="card-number"
@@ -11,16 +13,27 @@
           v-model="cardName"
         />
         <label for="create-select">Тип заказа </label>
-        <select id="create-select" v-model="cardType">
+        <select
+          id="create-select"
+          v-model="cardType">
           <option disabled value="">Выберите тип:</option>
-          <option v-for="value in optionValues" :key="value" :value="value">
+          <option
+            v-for="value in optionValues"
+            :key="value"
+            :value="value">
             {{ value }}
           </option>
         </select>
       </form>
       <div class="modal-buttons">
-        <button @click="createCardItem" class="create-card">Добавить</button>
-        <button @click="$emit('close-create-modal')" class="close-modal">
+        <button
+          @click="createCardItem"
+          class="create-card">
+          Добавить
+        </button>
+        <button
+          @click="$emit('close-create-modal')"
+          class="close-modal">
           Отмена
         </button>
       </div>

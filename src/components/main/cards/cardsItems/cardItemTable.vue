@@ -5,8 +5,12 @@
     <td>{{ card.type }}</td>
     <td>{{ card.date }}</td>
     <td class="table-buttons">
-      <div class="card__buttons-table" :class="{ bordered: active }">
-        <div class="card-buttons-menu-table" :class="{ shownTable: active }">
+      <div
+        class="card__buttons-table"
+        :class="{ bordered: active }">
+        <div
+          class="card-buttons-menu-table"
+          :class="{ shownTable: active }">
           <button
             class="edit-button"
             @click="$emit('open-edit-modal', card), setClass()"
@@ -34,8 +38,13 @@
               </g>
             </svg>
           </button>
-          <button class="delete-button" @click="$emit('delete-card', card.id)">
-            <svg width="10px" height="12px" xmlns="http://www.w3.org/2000/svg">
+          <button
+            class="delete-button"
+            @click="$emit('delete-card', card.id)">
+            <svg
+              width="10px"
+              height="12px"
+              xmlns="http://www.w3.org/2000/svg">
               <path
                 class="first-part"
                 d="m8.943 3.3333h-7.8859c-0.23864
@@ -67,8 +76,12 @@
             </svg>
           </button>
         </div>
-        <button class="menu-button" @click="setClass">
-          <img src="../../../../assets/menu-icon.svg" alt="menu icon" />
+        <button
+          class="menu-button"
+          @click="setClass">
+          <img
+            src="../../../../assets/menu-icon.svg"
+            alt="menu icon"/>
         </button>
       </div>
     </td>
@@ -77,7 +90,9 @@
 
 <script>
 export default {
-  props: ['card'],
+  props: {
+    card: Object,
+  },
   data() {
     return {
       active: false,

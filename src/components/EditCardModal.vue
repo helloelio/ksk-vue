@@ -2,7 +2,9 @@
   <div class="modal-edit hidden">
     <div class="modal-edit__content">
       <div class="modal-edit__title">Редактирование</div>
-      <form action="#" class="edit-card-form">
+      <form
+        action="#"
+        class="edit-card-form">
         <label for="edit-card-number">Номер накладной </label>
         <input
           id="edit-card-number"
@@ -26,12 +28,14 @@
       </form>
       <div class="modal-buttons">
         <button
-          @click="editCardItem"
           class="edit-card"
+          @click="editCardItem"
         >Редактировать
         </button>
-        <button @click="$emit('close-edit-modal')" class="close-modal">
-          Отмена
+        <button
+          class="close-modal"
+          @click="$emit('close-edit-modal')"
+        >Отмена
         </button>
       </div>
     </div>
