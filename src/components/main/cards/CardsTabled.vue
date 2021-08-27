@@ -12,7 +12,7 @@
         v-for="card in filterByName === '' ? cards : filteredCards"
         :key="card.id"
         :card="card"
-        @open-edit-modal="$emit('open-edit-modal', card.id)"
+        @edit-card="edited"
         @delete-card="$emit('delete-card', card.id)"
       />
     </table>
@@ -30,6 +30,13 @@ export default {
     ...mapGetters([
       'cards', 'filteredCards', 'filterByName',
     ]),
+  },
+  methods: {
+    edited(card) {
+      this.$store.commit('EDIT_CARD', card);
+      document.querySelector('.modal-edit').classList.remove('hidden');
+      document.querySelector('.modal-edit').classList.add('shown-edit-modal');
+    },
   },
 };
 </script>

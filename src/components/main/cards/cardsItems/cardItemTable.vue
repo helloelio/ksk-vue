@@ -13,7 +13,7 @@
           :class="{ shownTable: active }">
           <button
             class="edit-button"
-            @click="$emit('open-edit-modal', card), setClass()"
+            @click="$emit('edit-card', card), setClass()"
           >
             <svg
               fill="none"
