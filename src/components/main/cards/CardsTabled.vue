@@ -34,8 +34,7 @@ export default {
   methods: {
     edited(card) {
       this.$store.commit('EDIT_CARD', card);
-      document.querySelector('.modal-edit').classList.remove('hidden');
-      document.querySelector('.modal-edit').classList.add('shown-edit-modal');
+      this.$store.state.readyToEdit = 'ready';
     },
   },
 };

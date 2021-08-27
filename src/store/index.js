@@ -13,7 +13,7 @@ export default new Vuex.Store({
     cards: [],
     filterByName: '',
     filteredCards: [],
-    readyToEdit: false,
+    readyToEdit: '',
     cardToEdit: {},
     counter: 1,
   },
@@ -55,7 +55,6 @@ export default new Vuex.Store({
     },
     [ EDIT_CARD ]:
       (state, payload) => state.cards.forEach((card) => {
-        state.readyToEdit = true;
         if (card.id === payload.id) {
           state.cardToEdit = card;
         }
@@ -63,7 +62,7 @@ export default new Vuex.Store({
     editing: (state, payload) => {
       state.cardToEdit.name = payload.name;
       state.cardToEdit.type = payload.type;
-      state.readyToEdit = false;
+      state.readyToEdit = '';
     },
     increment: (state) => {
       state.counter += 1;

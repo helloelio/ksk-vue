@@ -1,6 +1,9 @@
 <template>
   <div class="modal-window">
-    <div class="modal-edit hidden" v-if="readyToEdit">
+    <div
+      class="modal-edit hidden"
+      v-if="readyToEdit === 'ready'"
+      :class="{ 'shown-edit-modal': readyToEdit === 'ready' }">
       <div class="modal-edit__content">
         <div class="modal-edit__title">Редактирование</div>
         <form
@@ -42,7 +45,9 @@
       </div>
     </div>
     <!--    ########################    -->
-    <div class="modal hidden" v-else-if="!readyToEdit">
+    <div
+      class="modal hidden" v-else-if="readyToEdit === 'notReady'"
+      :class="{ 'shown-create-modal': readyToEdit === 'notReady' }">
       <div class="modal__content">
         <div class="modal__title">Добавление</div>
         <form
@@ -130,7 +135,6 @@ export default {
         type: this.newCardType,
       };
       this.$emit('editCardItem', newCardItem);
-      this.newCardName = this.newCardType = '';
     },
   },
 };
@@ -139,6 +143,14 @@ export default {
 <style scoped>
 .hidden {
   display: none;
+}
+
+.shown-create-modal {
+  display: flex !important;
+}
+
+.shown-edit-modal {
+  display: flex !important;
 }
 
 .modal {

@@ -37,22 +37,14 @@ export default {
     editCardItem(editedCardItem) {
       this.$store.commit('editing', editedCardItem);
     },
-    // editCardItem(editCardItem) {
-    //   this.$store.commit('EDIT_CARD', editCardItem);
-    //   this.closeEditModal();
-    // },
     openCreateModal() {
-      this.$store.state.readyToEdit = false;
-      document.querySelector('.modal').classList.remove('hidden');
-      document.querySelector('.modal').classList.add('shown-create-modal');
+      this.$store.state.readyToEdit = 'notReady';
     },
     closeCreateModal() {
-      document.querySelector('.modal').classList.add('hidden');
-      document.querySelector('.modal').classList.remove('shown-create-modal');
+      this.$store.state.readyToEdit = '';
     },
     closeEditModal() {
-      document.querySelector('.modal-edit').classList.add('hidden');
-      document.querySelector('.modal-edit').classList.remove('shown-edit-modal');
+      this.$store.state.readyToEdit = '';
     },
   },
 };
@@ -77,14 +69,6 @@ export default {
 .router-link-active {
   background-color: #e5e9ec;
   border-radius: 0;
-}
-
-.shown-create-modal {
-  display: flex !important;
-}
-
-.shown-edit-modal {
-  display: flex !important;
 }
 
 .shownTable {
