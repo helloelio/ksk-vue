@@ -29,9 +29,7 @@
         </div>
       </div>
       <transition name="fade">
-        <router-view
-          @delete-card="deleteCard"
-          @open-edit-modal="checkId"/>
+        <router-view @delete-card="deleteCard"/>
       </transition>
     </div>
   </main>
@@ -51,15 +49,6 @@ export default {
   methods: {
     deleteCard(idToDelete) {
       this.$store.commit('DELETE_CARD', idToDelete);
-    },
-    checkId(item) {
-      console.log(item.id);
-      this.openEditModal();
-      this.$store.commit('EDIT_CARD', item);
-    },
-    openEditModal() {
-      document.querySelector('.modal-edit').classList.remove('hidden');
-      document.querySelector('.modal-edit').classList.add('shown-edit-modal');
     },
   },
 };

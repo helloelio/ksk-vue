@@ -13,6 +13,8 @@ export default new Vuex.Store({
     cards: [],
     filterByName: '',
     filteredCards: [],
+    readyToEdit: false,
+    cardToEdit: {},
     counter: 1,
   },
   getters: {
@@ -22,6 +24,7 @@ export default new Vuex.Store({
     optionValues: (state) => state.optionValues,
     filterByName: (state) => state.filterByName,
     filteredCards: (state) => state.filteredCards,
+    readyToEdit: (state) => state.readyToEdit,
   },
   mutations: {
     [ ADD_CARD ]: (state, payload) => state.cards.push(payload),
@@ -50,16 +53,22 @@ export default new Vuex.Store({
       state.filterByName = payload;
       state.filteredCards = state.cards.filter((card) => card.name.toLowerCase().includes(payload.toLowerCase()));
     },
-    [ EDIT_CARD ]: (state, payload) => state.cards.forEach((card) => {
-      if (card.id === payload.id) {
-        console.log('a');
-        card.name = payload.name;
-        card.type = payload.type;
-      }
-    }),
-    increment(state) {
+    [ EDIT_CARD ]:
+      (state, payload) => state.cards.forEach((card) => {
+        state.readyToEdit = true;
+        if (card.id === payload.id) {
+          state.cardToEdit = card;
+        }
+      }),
+    editing: (state, payload) => {
+      state.cardToEdit.name = payload.name;
+      state.cardToEdit.type = payload.type;
+      state.readyToEdit = false;
+    },
+    increment: (state) => {
       state.counter += 1;
     },
   },
-});
+})
+;
 

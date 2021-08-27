@@ -14,8 +14,15 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'AddButton',
+  computed: {
+    ...mapGetters([
+      'readyToEdit',
+    ]),
+  },
   data() {
     return {
       active: false,

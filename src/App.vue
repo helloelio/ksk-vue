@@ -1,12 +1,10 @@
 <template>
   <div id="app">
     <Header/>
-    <CreateCardModal
+    <ModalWindow
       @createCardItem="addCardItem"
+      @editCardItem="editCardItem"
       @close-create-modal="closeCreateModal"
-    />
-    <EditCardModal
-      @edit-card-item="editCardItem"
       @close-edit-modal="closeEditModal"
     />
     <div class="container">
@@ -18,15 +16,13 @@
 <script>
 import Header from './components/TheHeader.vue';
 import Main from './components/TheMain.vue';
-import CreateCardModal from './components/CreateCardModal.vue';
-import EditCardModal from './components/EditCardModal.vue';
+import ModalWindow from './components/ModalWindow.vue';
 
 export default {
   components: {
     Header,
     Main,
-    CreateCardModal,
-    EditCardModal,
+    ModalWindow,
   },
   data() {
     return {
@@ -38,11 +34,15 @@ export default {
       this.$store.commit('ADD_CARD', cardItem);
       this.closeCreateModal();
     },
-    editCardItem(editCardItem) {
-      this.$store.commit('EDIT_CARD', editCardItem);
-      this.closeEditModal();
+    editCardItem(editedCardItem) {
+      this.$store.commit('editing', editedCardItem);
     },
+    // editCardItem(editCardItem) {
+    //   this.$store.commit('EDIT_CARD', editCardItem);
+    //   this.closeEditModal();
+    // },
     openCreateModal() {
+      this.$store.state.readyToEdit = false;
       document.querySelector('.modal').classList.remove('hidden');
       document.querySelector('.modal').classList.add('shown-create-modal');
     },
@@ -51,14 +51,14 @@ export default {
       document.querySelector('.modal').classList.remove('shown-create-modal');
     },
     closeEditModal() {
-      document.querySelector('.modal-edit').classList.remove('shown-edit-modal');
       document.querySelector('.modal-edit').classList.add('hidden');
+      document.querySelector('.modal-edit').classList.remove('shown-edit-modal');
     },
   },
 };
 </script>
 
-<!--TODO: make = editCardModal, make = sorting, make = filter, fix buttons style for tables -->
+<!--TODO: fix editing and make add and edit component in one -->
 
 <style lang="scss">
 .routes {

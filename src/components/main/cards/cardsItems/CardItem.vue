@@ -10,7 +10,7 @@
           :class="{ shown: this.active }">
           <button
             class="edit-btn"
-            @click="$emit('open-edit-modal', card), setClass()">
+            @click="$emit('edit-card', card), setClass()">
             <img
               src="../../../../assets/edit-icon.svg"
               alt="edit icon"/>

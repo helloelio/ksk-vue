@@ -5,7 +5,7 @@
       :key="card.id"
       :card="card"
       @delete-card="$emit('delete-card', card.id)"
-      @open-edit-modal="$emit('open-edit-modal', card)"
+      @edit-card="edited"
     />
   </div>
 </template>
@@ -18,8 +18,15 @@ export default {
   components: { CardItem },
   computed: {
     ...mapGetters([
-      'cards', 'filteredCards', 'filterByName',
+      'cards', 'filteredCards', 'filterByName', 'readyToEdit',
     ]),
+  },
+  methods: {
+    edited(card) {
+      this.$store.commit('EDIT_CARD', card);
+      document.querySelector('.modal-edit').classList.remove('hidden');
+      document.querySelector('.modal-edit').classList.add('shown-edit-modal');
+    },
   },
 };
 </script>
