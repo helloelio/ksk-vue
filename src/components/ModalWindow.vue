@@ -134,7 +134,11 @@ export default {
         name: this.newCardName,
         type: this.newCardType,
       };
-      this.$emit('editCardItem', newCardItem);
+      if (this.newCardName === '' || this.newCardType === '') {
+        alert(this.newCardName !== '' ? 'Выберите тип' : 'Введите название');
+      } else {
+        this.$emit('editCardItem', newCardItem);
+      }
     },
   },
 };
