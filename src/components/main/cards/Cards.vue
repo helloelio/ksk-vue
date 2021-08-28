@@ -18,7 +18,7 @@ export default {
   components: { CardItem },
   computed: {
     ...mapGetters([
-      'cards', 'filteredCards', 'filterByName', 'readyToEdit',
+      'cards', 'filteredCards', 'filterByName',
     ]),
   },
   methods: {
