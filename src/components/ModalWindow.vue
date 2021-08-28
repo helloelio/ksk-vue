@@ -14,12 +14,12 @@
             id="edit-card-number"
             type="text"
             placeholder="Введите значение"
-            v-model="newCardName"
+            v-model="setNewCardName"
           />
           <label for="edit-select">Тип заказа </label>
           <select
             id="edit-select"
-            v-model="newCardType"
+            v-model="setNewCardType"
           >
             <option disabled value="">Выберите тип:</option>
             <option
@@ -98,7 +98,6 @@ export default {
     return {
       cardName: '',
       cardType: '',
-      newCardName: '',
       newCardType: '',
     };
   },
@@ -106,6 +105,22 @@ export default {
     ...mapGetters([
       'optionValues', 'readyToEdit',
     ]),
+    setNewCardName: {
+      get() {
+        return this.$store.state.newCardName;
+      },
+      set(event) {
+        this.$store.commit('setNewCardName', event);
+      },
+    },
+    setNewCardType: {
+      get() {
+        return this.$store.state.newCardType;
+      },
+      set(event) {
+        this.$store.commit('setNewCardType', event);
+      },
+    },
   },
   methods: {
     createCardItem() {
@@ -131,11 +146,11 @@ export default {
     },
     editCard() {
       const newCardItem = {
-        name: this.newCardName,
+        name: this.setNewCardName,
         type: this.newCardType,
       };
-      if (this.newCardName === '' || this.newCardType === '') {
-        alert(this.newCardName !== '' ? 'Выберите тип' : 'Введите название');
+      if (this.setNewCardName === '') {
+        alert(this.setNewCardName !== '' ? 'Выберите тип' : 'Введите название');
       } else {
         this.$emit('editCardItem', newCardItem);
       }
