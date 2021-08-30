@@ -8,15 +8,12 @@
     ></a-table-header>
     <template v-for="item in items">
       <a-table-row
-        :actionClick="actionClick"
-        :class="getRowClassesByItem(item)"
         :item="item"
         :headers="getHeaders"
         :key="item.id + '-row'"
         :ref="item.id + '-row'"
       ></a-table-row>
       <a-table-wide-row
-        :component="useExtRowComponent"
         :extData="item.extData"
         :headers="getHeaders"
         :id="item.id"
@@ -65,22 +62,6 @@ export default {
       type: Object,
       default() {
         return {};
-      },
-    },
-    actionClick: {
-      type: Function,
-      default() {
-      },
-    },
-    useExtRowComponent: {
-      type: Object,
-      default() {
-        return null;
-      },
-    },
-    getRowClassesByItem: {
-      type: Function,
-      default() {
       },
     },
   },

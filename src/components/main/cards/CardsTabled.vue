@@ -3,17 +3,16 @@
     :items="filterByName === '' ? items : filteredCards"
     :headers="headers"
     :useExtRowComponent="getExtRowComponent"
-    :sortParamsDefault="sortParamsDefault"
     :getRowClassesByItem="getRowClassesByItem"
+    @onChangeSort="onChangeSort"
   />
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import ATable from './cardsItems/ATable.vue';
-import TableCustomHeader from '../../../../stubs/components/TableCustomHeader.vue';
-import TableCustomCellActions from '../../../../stubs/components/TableCustomCellActions.vue';
 import TableExtRowComponent from '../../../../stubs/components/TableExtRowComponent.vue';
+import TableCustomCellActions from '../../../../stubs/components/TableCustomCellActions.vue';
 
 export default {
   components: { ATable },
@@ -30,11 +29,11 @@ export default {
         },
         {
           key: 'name',
+          name: 'name',
           title: 'Name',
           headerAlign: 'center',
           dataAlign: 'left',
-          // sortControl: true,
-          useHeaderComponent: TableCustomHeader,
+          sortControl: true,
         },
         {
           key: 'date',
@@ -42,6 +41,8 @@ export default {
           title: 'Date',
           headerAlign: 'center',
           dataAlign: 'left',
+          sortControl: true,
+
         },
         {
           key: 'type',
@@ -49,6 +50,8 @@ export default {
           title: 'Type',
           headerAlign: 'center',
           dataAlign: 'left',
+          sortControl: true,
+
         },
         {
           key: 'actions',
@@ -66,14 +69,6 @@ export default {
           position: 'afterAll',
         },
       ],
-      sortParamsDefault: {
-        sidx: 'number',
-        sord: 'desc',
-      },
-      sortParams: {
-        sidx: '',
-        sord: '',
-      },
     };
   },
   computed: {
@@ -92,6 +87,9 @@ export default {
     getRowClassesByItem(item) {
       return `custom-class-${item.id}`;
     },
+    onChangeSort(data) {
+      this.$store.commit('SORTING_ITEMS_TABLE', data);
+    },
   },
 };
 </script>
@@ -101,5 +99,4 @@ export default {
   width: 100%;
   margin-top: 20px;
 }
-
 </style>

@@ -1,21 +1,11 @@
 <script>
+import { mapGetters } from 'vuex';
+
 export default {
   name: 'ATableTh',
 
   props: {
     header: {
-      type: Object,
-      default() {
-        return {};
-      },
-    },
-    sortParams: {
-      type: Object,
-      default() {
-        return {};
-      },
-    },
-    sortParamsDefault: {
       type: Object,
       default() {
         return {};
@@ -34,6 +24,9 @@ export default {
   },
 
   computed: {
+    ...mapGetters([
+      'sortParams', 'sortParamsDefault',
+    ]),
     isActive() {
       return (this.sortParams.sidx === this.header.name);
     },
@@ -90,6 +83,7 @@ export default {
   methods: {
     changeSord() {
       if (this.header.sortControl) {
+        console.log(this.getNextSord);
         this.$emit('onChangeSort', {
           data: {
             sidx: this.header.name,
@@ -157,4 +151,5 @@ export default {
     );
   },
 };
+
 </script>
