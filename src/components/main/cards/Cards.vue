@@ -1,10 +1,10 @@
 <template>
   <div class="cards">
     <CardItem
-      v-for="card in filterByName === '' ? cards : filteredCards"
-      :key="card.id"
-      :card="card"
-      @delete-card="$emit('delete-card', card.id)"
+      v-for="item in filterByName === '' ? items : filteredCards"
+      :key="item.id"
+      :item="item"
+      @delete-card="$emit('delete-card', item.id)"
       @edit-card="edited"
     />
   </div>
@@ -14,16 +14,16 @@ import { mapGetters } from 'vuex';
 import CardItem from './cardsItems/CardItem.vue';
 
 export default {
-  name: 'Cards',
+  name: 'items',
   components: { CardItem },
   computed: {
     ...mapGetters([
-      'cards', 'filteredCards', 'filterByName',
+      'items', 'filteredCards', 'filterByName',
     ]),
   },
   methods: {
-    edited(card) {
-      this.$store.commit('EDIT_CARD', card);
+    edited(item) {
+      this.$store.commit('EDIT_CARD', item);
       this.$store.state.readyToEdit = 'ready';
     },
   },
@@ -43,4 +43,17 @@ export default {
     grid-template-columns: 1fr 1fr;
   }
 }
+
+@media only screen and (max-width: 760px) {
+  .cards {
+    grid-template-columns: 1fr;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .card {
+    width: 100%;
+  }
+}
+
 </style>

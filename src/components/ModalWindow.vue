@@ -130,6 +130,7 @@ export default {
       - ${currentDate.getFullYear()}`;
       const cardItem = {
         id: this.$store.state.counter,
+        pos: this.$store.state.counter,
         name: this.cardName,
         date: formattedDate,
         type: this.cardType,

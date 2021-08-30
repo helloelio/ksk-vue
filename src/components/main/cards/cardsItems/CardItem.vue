@@ -1,43 +1,30 @@
 <template>
-  <div
-    class="card"
-    :class="String(card.id)">
+  <div class="card" :class="String(item.id)">
     <div class="card__header">
-      <div class="card__name">{{ card.name }}</div>
+      <div class="card__name">{{ item.name }}</div>
       <div class="card__buttons">
-        <div
-          class="card-buttons-menu"
-          :class="{ shown: this.active }">
+        <div class="card-buttons-menu" :class="{ shown: this.active }">
           <button
             class="edit-btn"
-            @click="$emit('edit-card', card), setClass()">
-            <img
-              src="../../../../assets/edit-icon.svg"
-              alt="edit icon"/>
+            @click="$emit('edit-card', item), setClass()"
+          >
+            <img src="../../../../assets/edit-icon.svg" alt="edit icon" />
             <span>редактировать</span>
           </button>
-          <button
-            class="delete-btn"
-            @click="$emit('delete-card', card.id)">
-            <img
-              src="../../../../assets/delete-icon.svg"
-              alt="close icon"/>
+          <button class="delete-btn" @click="$emit('delete-card', item.id)">
+            <img src="../../../../assets/delete-icon.svg" alt="close icon" />
             <span>удалить</span>
           </button>
         </div>
-        <button
-          class="menu-btn"
-          @click="setClass">
-          <img
-            src="../../../../assets/menu-icon-widget.svg"
-            alt="menu icon"/>
+        <button class="menu-btn" @click="setClass">
+          <img src="../../../../assets/menu-icon-widget.svg" alt="menu icon" />
         </button>
       </div>
     </div>
     <div class="card__body">
-      <div class="card__id">ID: {{ card.id }}</div>
-      <div class="card__date">Дата: {{ card.date }}</div>
-      <div class="card__type">Тип: {{ card.type }}</div>
+      <div class="card__id">ID: {{ item.id }}</div>
+      <div class="card__date">Дата: {{ item.date }}</div>
+      <div class="card__type">Тип: {{ item.type }}</div>
     </div>
   </div>
 </template>
@@ -45,7 +32,7 @@
 <script>
 export default {
   props: {
-    card: Object,
+    item: Object,
   },
   name: 'CardItem',
   data() {

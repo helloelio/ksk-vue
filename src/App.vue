@@ -182,6 +182,17 @@ table {
   margin-left: 20px;
 }
 
+.table-edit-panel {
+  display: flex;
+  justify-content: space-evenly;
+  border: 1px solid #a5a5a5;
+  border-radius: 4px;
+}
+
+.delete-button {
+  margin-left: 10px;
+}
+
 @media only screen and (max-width: 1200px) {
   .header {
     text-align: center;
@@ -205,4 +216,5 @@ table {
     max-width: 100%;
   }
 }
+
 </style>

@@ -85,4 +85,14 @@ main {
 {
   opacity: 0;
 }
+
+@media only screen and (max-width: 760px) {
+  main {
+    grid-template-columns: auto;
+  }
+
+  .left-side {
+    justify-content: center;
+  }
+}
 </style>
