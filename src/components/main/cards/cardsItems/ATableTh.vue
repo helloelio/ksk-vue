@@ -83,7 +83,6 @@ export default {
   methods: {
     changeSord() {
       if (this.header.sortControl) {
-        console.log(this.getNextSord);
         this.$emit('onChangeSort', {
           data: {
             sidx: this.header.name,

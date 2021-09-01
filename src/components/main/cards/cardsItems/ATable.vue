@@ -13,14 +13,6 @@
         :key="item.id + '-row'"
         :ref="item.id + '-row'"
       ></a-table-row>
-      <a-table-wide-row
-        :extData="item.extData"
-        :headers="getHeaders"
-        :id="item.id"
-        :key="item.id + '-ext-row'"
-        @onChangeHovered="onChangeHoveredRow"
-        v-if="item.extData"
-      ></a-table-wide-row>
     </template>
   </table>
 </template>
@@ -28,7 +20,6 @@
 <script>
 import ATableHeader from './ATableHeader.vue';
 import ATableRow from './ATableRow.vue';
-import ATableWideRow from './ATableWideRow.vue';
 
 export default {
   name: 'ATable',
@@ -36,7 +27,6 @@ export default {
   components: {
     ATableHeader,
     ATableRow,
-    ATableWideRow,
   },
 
   props: {

@@ -1,7 +1,6 @@
 <template>
   <tr
-    :class="['a-table-row', {'hovered': hovered}]"
-    @click.stop="actionClick(item)"
+    :class="['a-table-row', { hovered: hovered }]"
     @mouseleave="toggleRowHover(false)"
   >
     <a-table-td
@@ -34,11 +33,6 @@ export default {
     headers: {
       type: Array,
       default: () => [],
-    },
-    actionClick: {
-      type: Function,
-      default() {
-      },
     },
   },
 
