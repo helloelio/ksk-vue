@@ -8,11 +8,22 @@
     ></a-table-header>
     <template v-for="item in items">
       <a-table-row
+        :actionClick="actionClick"
+        :class="getRowClassesByItem(item)"
         :item="item"
         :headers="getHeaders"
         :key="item.id + '-row'"
         :ref="item.id + '-row'"
       ></a-table-row>
+      <a-table-wide-row
+        :component="useExtRowComponent"
+        :extData="item.extData"
+        :headers="getHeaders"
+        :id="item.id"
+        :key="item.id + '-ext-row'"
+        @onChangeHovered="onChangeHoveredRow"
+        v-if="item.extData"
+      ></a-table-wide-row>
     </template>
   </table>
 </template>
@@ -20,15 +31,15 @@
 <script>
 import ATableHeader from './ATableHeader.vue';
 import ATableRow from './ATableRow.vue';
+import ATableWideRow from './ATableWideRow.vue';
 
 export default {
   name: 'ATable',
-
   components: {
     ATableHeader,
     ATableRow,
+    ATableWideRow,
   },
-
   props: {
     items: {
       type: Array,
@@ -54,6 +65,22 @@ export default {
         return {};
       },
     },
+    actionClick: {
+      type: Function,
+      default() {
+      },
+    },
+    useExtRowComponent: {
+      type: Object,
+      default() {
+        return null;
+      },
+    },
+    getRowClassesByItem: {
+      type: Function,
+      default() {
+      },
+    },
   },
 
   computed: {
@@ -73,9 +100,8 @@ export default {
 
   methods: {
     onChangeSort(data) {
-      this.$emit('onChangeSort', data);
+      this.$store.commit('SORTING_ITEMS_TABLE', data);
     },
-
     onChangeHoveredRow(params) {
       if (params.hovered) {
         this.$refs[`${params.id}-row`][0].$el.classList.add('hovered-ext');
@@ -86,7 +112,10 @@ export default {
   },
 };
 </script>
+
 <style lang='scss'>
+@import '../../../../font-awesome/css/font-awesome.min.css';
+
 $rowBgColor: #fff;
 $rowBorderColorNormal: #e4e8ea;
 $rowBorderColorActive: #d3d7d9;

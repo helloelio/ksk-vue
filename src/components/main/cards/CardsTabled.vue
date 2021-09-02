@@ -4,14 +4,18 @@
     :headers="headers"
     :sortParams="sortParams"
     :sortParamsDefault="sortParamsDefault"
-    @onChangeSort="onChangeSort"
+    :useExtRowComponent="getExtRowComponent"
+    :getRowClassesByItem="getRowClassesByItem"
   />
 </template>
 
 <script>
 import { mapGetters } from 'vuex';
 import ATable from './cardsItems/ATable.vue';
+import TableExtRowComponent from '../../../../stubs/components/TableExtRowComponent.vue';
 import TableCustomCellActions from '../../../../stubs/components/TableCustomCellActions.vue';
+// import TableCustomHeader from '../../../../stubs/components/TableCustomHeader.vue';
+// import TableCustomCell from '../stubs/components/TableCustomCell.vue';
 
 export default {
   components: { ATable },
@@ -41,7 +45,6 @@ export default {
           headerAlign: 'center',
           dataAlign: 'left',
           sortControl: true,
-
         },
         {
           key: 'type',
@@ -50,7 +53,6 @@ export default {
           headerAlign: 'center',
           dataAlign: 'left',
           sortControl: true,
-
         },
         {
           key: 'actions',
@@ -84,14 +86,17 @@ export default {
         return this.$store.state.sortParamsDefault;
       },
     },
+    getExtRowComponent() {
+      return TableExtRowComponent;
+    },
   },
   methods: {
     edited(item) {
       this.$store.commit('EDIT_CARD', item);
       this.$store.state.readyToEdit = 'ready';
     },
-    onChangeSort(data) {
-      this.$store.commit('SORTING_ITEMS_TABLE', data);
+    getRowClassesByItem(item) {
+      return `custom-class-${item.id}`;
     },
   },
 };

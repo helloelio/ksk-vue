@@ -1,11 +1,22 @@
 <script>
-import { mapGetters } from 'vuex';
 
 export default {
   name: 'ATableTh',
 
   props: {
     header: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
+    sortParams: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
+    sortParamsDefault: {
       type: Object,
       default() {
         return {};
@@ -24,9 +35,6 @@ export default {
   },
 
   computed: {
-    ...mapGetters([
-      'sortParams', 'sortParamsDefault',
-    ]),
     isActive() {
       return (this.sortParams.sidx === this.header.name);
     },
@@ -64,9 +72,11 @@ export default {
       if (this.sortParams.sidx === this.header.name) {
         if (this.sortParams.sord.toLowerCase() === 'asc') {
           resultClass = ascOrderClass;
+          console.log(resultClass);
         }
         if (this.sortParams.sord.toLowerCase() === 'desc') {
           resultClass = descOrderClass;
+          console.log(resultClass);
         }
       }
       return resultClass;
@@ -129,7 +139,7 @@ export default {
           'active-ctrl': this.isActive,
         },
       };
-      sortControl = createElement('div', sortControlAttr, '');
+      sortControl = createElement('i', sortControlAttr, '');
     } else {
       sortControl = createElement();
     }

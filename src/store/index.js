@@ -40,8 +40,8 @@ export default new Vuex.Store({
     sortParamsDefault: (state) => state.sortParamsDefault
   },
   mutations: {
-    [ADD_CARD]: (state, payload) => state.items.push(payload),
-    [DELETE_CARD]: (state, payload) => {
+    [ ADD_CARD ]: (state, payload) => state.items.push(payload),
+    [ DELETE_CARD ]: (state, payload) => {
       console.log(payload);
       if (state.filterByName === '') {
         state.items = state.items.filter((item) => item.id !== payload.id);
@@ -51,7 +51,7 @@ export default new Vuex.Store({
         state.filteredCards = state.filteredCards.filter((item) => item.id !== payload.id);
       }
     },
-    [SORTING_CARDS]: (state, payload) => {
+    [ SORTING_CARDS ]: (state, payload) => {
       if (state.filterByName === '') {
         state.items = state.items.sort((a, b) => {
           if (payload === 'ascending') return a.name > b.name ? 1 : -1;
@@ -64,32 +64,31 @@ export default new Vuex.Store({
         });
       }
     },
-    [SORTING_ITEMS_TABLE]: (state, payload) => {
-
+    [ SORTING_ITEMS_TABLE ]: (state, payload) => {
       state.sortParams.sidx = payload.data.sidx;
       state.sortParams.sord = payload.data.sord;
       if (state.filterByName === '') {
         state.items = state.items.sort((a, b) => {
           switch (state.sortParams.sord) {
             case 'asc':
-              return a[payload.data.sidx] > b[payload.data.sidx] ? 1 : -1;
+              return a[ payload.data.sidx ] > b[ payload.data.sidx ] ? 1 : -1;
               break;
             case 'desc':
-              return a[payload.data.sidx] > b[payload.data.sidx] ? -1 : 1;
+              return a[ payload.data.sidx ] > b[ payload.data.sidx ] ? -1 : 1;
               break;
             default:
-              return a[payload.data.sidx] > b[payload.data.sidx] ? 0 : 1;
+              return a[ payload.data.sidx ] > b[ payload.data.sidx ] ? 0 : 1;
           }
         });
       }
     },
-    [FILTER_CARDS]: (state, payload) => {
+    [ FILTER_CARDS ]: (state, payload) => {
       state.filterByName = payload;
       state.filteredCards = state.items.filter((item) => item.name.toLowerCase().includes(payload.toLowerCase()));
     },
     setNewCardName: (state, payload) => state.newCardName = payload,
     setNewCardType: (state, payload) => state.newCardType = payload,
-    [EDIT_CARD]:
+    [ EDIT_CARD ]:
       (state, payload) => state.items.forEach((item) => {
         if (item.id === payload.id) {
           state.cardToEdit = item;
@@ -108,5 +107,5 @@ export default new Vuex.Store({
     },
   },
 })
-  ;
+;
 

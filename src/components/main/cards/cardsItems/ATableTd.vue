@@ -72,7 +72,6 @@ export default {
       return '';
     },
   },
-
   render(createElement) {
     let component = '';
     let params = {};
