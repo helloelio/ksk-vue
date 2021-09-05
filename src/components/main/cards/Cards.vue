@@ -37,13 +37,24 @@ export default {
   gap: 20px;
   margin-top: 20px;
 }
-
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1600px) {
   .cards {
     grid-template-columns: 1fr 1fr;
   }
 }
-
+@media only screen and (max-width: 1200px) {
+  .cards {
+    justify-content: center;
+  }
+  .card {
+    width: 300px;
+  }
+}
+@media only screen and (max-width: 950px) {
+  .card {
+    width: 230px;
+  }
+}
 @media only screen and (max-width: 760px) {
   .cards {
     grid-template-columns: 1fr;
@@ -55,5 +66,4 @@ export default {
     width: 100%;
   }
 }
-
 </style>

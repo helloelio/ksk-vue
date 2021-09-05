@@ -114,7 +114,7 @@ export default {
 </script>
 
 <style lang='scss'>
-@import '../../../../font-awesome/css/font-awesome.min.css';
+@import "../../../../font-awesome/css/font-awesome.min.css";
 
 $rowBgColor: #fff;
 $rowBorderColorNormal: #e4e8ea;
@@ -225,6 +225,7 @@ $mainBbColor: #fefefe;
     &:last-child {
       td {
         border-bottom: 1px solid $rowBorderColorNormal;
+        width: 100px;
       }
     }
   }

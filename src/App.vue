@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header/>
+    <Header />
     <ModalWindow
       @createCardItem="addCardItem"
       @editCardItem="editCardItem"
@@ -8,7 +8,7 @@
       @close-edit-modal="closeEditModal"
     />
     <div class="container">
-      <Main @open-create-modal="openCreateModal"/>
+      <Main @open-create-modal="openCreateModal" />
     </div>
   </div>
 </template>
@@ -184,15 +184,26 @@ table {
 
 .table-edit-panel {
   display: flex;
-  justify-content: space-evenly;
-  border: 1px solid #a5a5a5;
+  border: 1px solid white;
+  justify-content: center;
   border-radius: 4px;
+  padding: 2px;
 }
-
 .delete-button {
   margin-left: 10px;
 }
-
+@media only screen and(max-width: 1600px) {
+  .container {
+    max-width: 1440px;
+    margin: 30px auto;
+  }
+}
+@media only screen and(max-width: 1400px) {
+  .container {
+    max-width: 1140px;
+    margin: 30px auto;
+  }
+}
 @media only screen and (max-width: 1200px) {
   .header {
     text-align: center;
@@ -203,12 +214,6 @@ table {
   .container {
     padding: 10px;
   }
-  .right-side {
-    margin: 0;
-  }
-  .cards {
-    width: 300px;
-  }
   .card__create {
     max-width: 100%;
   }
@@ -216,5 +221,4 @@ table {
     max-width: 100%;
   }
 }
-
 </style>
