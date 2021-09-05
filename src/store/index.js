@@ -76,7 +76,20 @@ export default new Vuex.Store({
             default:
               return a[payload.data.sidx] > b[payload.data.sidx] ? 0 : 1;
           }
-        });
+        })
+      } else {
+        state.filteredCards = state.filteredCards.sort((a, b) => {
+          switch (state.sortParams.sord) {
+            case 'asc':
+              return a[payload.data.sidx] > b[payload.data.sidx] ? 1 : -1;
+              break;
+            case 'desc':
+              return a[payload.data.sidx] > b[payload.data.sidx] ? -1 : 1;
+              break;
+            default:
+              return a[payload.data.sidx] > b[payload.data.sidx] ? 0 : 1;
+          }
+        })
       }
     },
     [FILTER_CARDS]: (state, payload) => {

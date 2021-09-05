@@ -72,11 +72,9 @@ export default {
       if (this.sortParams.sidx === this.header.name) {
         if (this.sortParams.sord.toLowerCase() === 'asc') {
           resultClass = ascOrderClass;
-          console.log(resultClass);
         }
         if (this.sortParams.sord.toLowerCase() === 'desc') {
           resultClass = descOrderClass;
-          console.log(resultClass);
         }
       }
       return resultClass;

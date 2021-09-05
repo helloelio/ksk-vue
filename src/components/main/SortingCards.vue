@@ -1,16 +1,9 @@
 <template>
   <div class="card__sort">
-    <select
-      id="sort-select"
-      @change="sortingCards"
-    >
+    <select id="sort-select" @change="sortingCards">
       <option selected disabled value="">Sorting</option>
-      <option value="ascending">
-        Sort by Invoice number: ascending
-      </option>
-      <option value="descending">
-        Sort by Invoice number: descending
-      </option>
+      <option value="ascending">Sort by Invoice number: ascending</option>
+      <option value="descending">Sort by Invoice number: descending</option>
     </select>
   </div>
 </template>
