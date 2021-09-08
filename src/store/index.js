@@ -1,7 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import {
-  ADD_CARD, DELETE_CARD, EDIT_CARD, FILTER_CARDS, SORTING_CARDS, SORTING_ITEMS_TABLE,
+  ADD_CARD,
+  DELETE_CARD,
+  EDIT_CARD,
+  FILTER_CARDS,
+  SORTING_CARDS,
+  SORTING_ITEMS_TABLE,
 } from './mutation-types';
 
 Vue.use(Vuex);
@@ -94,18 +99,18 @@ export default new Vuex.Store({
     },
     [FILTER_CARDS]: (state, payload) => {
       state.filterByName = payload;
-      state.filteredCards = state.items.filter((item) => item.name.toLowerCase().includes(payload.toLowerCase()));
+      state.filteredCards = state.items.filter((item) => item.name.toLowerCase().includes(
+        payload.toLowerCase()));
     },
     setNewCardName: (state, payload) => state.newCardName = payload,
     setNewCardType: (state, payload) => state.newCardType = payload,
-    [EDIT_CARD]:
-      (state, payload) => state.items.forEach((item) => {
-        if (item.id === payload.id) {
-          state.cardToEdit = item;
-          state.newCardName = item.name;
-          state.newCardType = item.type;
-        }
-      }),
+    [EDIT_CARD]: (state, payload) => state.items.forEach((item) => {
+      if (item.id === payload.id) {
+        state.cardToEdit = item;
+        state.newCardName = item.name;
+        state.newCardType = item.type;
+      }
+    }),
     editing: (state) => {
       state.cardToEdit.name = state.newCardName;
       state.cardToEdit.type = state.newCardType;
@@ -116,6 +121,4 @@ export default new Vuex.Store({
       state.counter += 1;
     },
   },
-})
-  ;
-
+});
