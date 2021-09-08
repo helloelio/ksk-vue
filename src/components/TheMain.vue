@@ -31,8 +31,8 @@
 import AddButton from './main/AddButton.vue';
 import SortingCards from './main/SortingCards.vue';
 import FilterCards from './main/FilterCards.vue';
-import WidgetIcon from './svgs/WidgetIcon.vue';
-import TableIcon from './svgs/TableIcon.vue';
+import WidgetIcon from '../assets/svgs/WidgetIcon.vue';
+import TableIcon from '../assets/svgs/TableIcon.vue';
 
 export default {
   components: {

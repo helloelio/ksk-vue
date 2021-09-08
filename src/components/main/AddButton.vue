@@ -1,22 +1,21 @@
 <template>
   <div class="card__create">
     <div class="card__button">
-      <button
-        class="add-button"
-        @click="$emit('open-create-modal')"
-      ><img
-        src="../../assets/plus.svg"
-        alt="plus icon"
-      >Добавить
+      <button class="add-button" @click="$emit('open-create-modal')">
+        <PlusIcon />Добавить
       </button>
     </div>
   </div>
 </template>
 
 <script>
+import PlusIcon from '../../assets/svgs/PlusIcon.vue';
 
 export default {
   name: 'AddButton',
+  components: {
+    PlusIcon,
+  },
   data() {
     return {
       active: false,

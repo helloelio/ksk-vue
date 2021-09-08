@@ -42,10 +42,10 @@ export default new Vuex.Store({
     [ADD_CARD]: (state, payload) => state.items.push(payload),
     [DELETE_CARD]: (state, payload) => {
       if (state.filterByName === '') {
-        state.items = state.items.filter((item) => item.id !== payload.id);
+        state.items = state.items.filter((item) => item.id !== payload);
       } else {
-        state.items = state.items.filter((item) => item.id !== payload.id);
-        state.filteredCards = state.filteredCards.filter((item) => item.id !== payload.id);
+        state.items = state.items.filter((item) => item.id !== payload);
+        state.filteredCards = state.filteredCards.filter((item) => item.id !== payload);
       }
     },
     [SORTING_CARDS]: (state, payload) => {

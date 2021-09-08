@@ -8,16 +8,16 @@
             class="edit-btn"
             @click="$emit('edit-card', item), setClass()"
           >
-            <img src="../../../../assets/edit-icon.svg" alt="edit icon" />
+            <WidgetEditIcon />
             <span>редактировать</span>
           </button>
           <button class="delete-btn" @click="$emit('delete-card', item.id)">
-            <img src="../../../../assets/delete-icon.svg" alt="close icon" />
+            <WidgetDeleteIcon />
             <span>удалить</span>
           </button>
         </div>
         <button class="menu-btn" @click="setClass">
-          <img src="../../../../assets/menu-icon-widget.svg" alt="menu icon" />
+          <WidgetMenuIcon />
         </button>
       </div>
     </div>
@@ -30,7 +30,16 @@
 </template>
 
 <script>
+import WidgetMenuIcon from '../../../../assets/svgs/widget-icons/WidgetMenuIcon.vue';
+import WidgetDeleteIcon from '../../../../assets/svgs/widget-icons/WidgetDeleteIcon.vue';
+import WidgetEditIcon from '../../../../assets/svgs/widget-icons/WidgetEditIcon.vue';
+
 export default {
+  components: {
+    WidgetMenuIcon,
+    WidgetDeleteIcon,
+    WidgetEditIcon,
+  },
   props: {
     item: Object,
   },
