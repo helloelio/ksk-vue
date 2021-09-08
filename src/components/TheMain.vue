@@ -1,21 +1,21 @@
 <template>
   <main class="main">
     <div class="left-side">
-      <AddButton @open-create-modal="$emit('open-create-modal')" />
-      <FilterCards />
+      <add-button @open-create-modal="$emit('open-create-modal')" />
+      <filter-cards />
     </div>
     <div class="right-side">
       <div class="right-side-header">
-        <SortingCards />
+        <sorting-cards />
         <div class="routes">
           <router-link to="/tables" class="nav-link">
             <button class="nav-button nav-table">
-              <TableIcon />
+              <table-icon />
             </button>
           </router-link>
           <router-link to="/widgets" class="nav-link">
             <button class="nav-button nav-widgets">
-              <WidgetIcon />
+              <widget-icon />
             </button>
           </router-link>
         </div>

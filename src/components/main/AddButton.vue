@@ -2,7 +2,7 @@
   <div class="card__create">
     <div class="card__button">
       <button class="add-button" @click="$emit('open-create-modal')">
-        <PlusIcon />Добавить
+        <plus-icon />Добавить
       </button>
     </div>
   </div>

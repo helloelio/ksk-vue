@@ -9,14 +9,14 @@
         :title="getMessageByKey('ext-panel')"
         @mouseover="toggleRowHover(true)"
       >
-        <TableMenuIcon />
+        <table-menu-icon />
       </button>
       <div v-if="rowHovered" class="howeredActions">
         <button class="edit-button" @click="edited">
-          <TableEditIcon />
+          <table-edit-icon />
         </button>
         <button class="delete-button" @click="deleteTableItem">
-          <TableDeleteIcon />
+          <table-delete-icon />
         </button>
       </div>
     </div>

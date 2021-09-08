@@ -8,16 +8,16 @@
             class="edit-btn"
             @click="$emit('edit-card', item), setClass()"
           >
-            <WidgetEditIcon />
+            <widget-edit-icon />
             <span>редактировать</span>
           </button>
           <button class="delete-btn" @click="$emit('delete-card', item.id)">
-            <WidgetDeleteIcon />
+            <widget-delete-icon />
             <span>удалить</span>
           </button>
         </div>
         <button class="menu-btn" @click="setClass">
-          <WidgetMenuIcon />
+          <widget-menu-icon />
         </button>
       </div>
     </div>

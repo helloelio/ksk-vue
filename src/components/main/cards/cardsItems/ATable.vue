@@ -112,7 +112,7 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../../../font-awesome/css/font-awesome.min.css";
+@import "../../../../assets/font-awesome/css/font-awesome.min.css";
 
 $rowBgColor: #fff;
 $rowBorderColorNormal: #e4e8ea;

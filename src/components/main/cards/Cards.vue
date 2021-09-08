@@ -1,6 +1,6 @@
 <template>
   <div class="cards">
-    <CardItem
+    <card-item
       v-for="item in filterByName === '' ? items : filteredCards"
       :key="item.id"
       :item="item"
