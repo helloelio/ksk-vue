@@ -5,14 +5,12 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-
 export default {
   name: 'Header',
-  computed: {
-    ...mapGetters([
-      'headerTitle',
-    ]),
+  data() {
+    return {
+      headerTitle: 'Тестовое задание',
+    };
   },
 };
 </script>

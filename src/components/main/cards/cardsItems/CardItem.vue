@@ -11,7 +11,7 @@
             <widget-edit-icon />
             <span>редактировать</span>
           </button>
-          <button class="delete-btn" @click="$emit('delete-card', item.id)">
+          <button class="delete-btn" @click="$emit('delete-card', item)">
             <widget-delete-icon />
             <span>удалить</span>
           </button>
@@ -41,7 +41,12 @@ export default {
     WidgetEditIcon,
   },
   props: {
-    item: Object,
+    item: {
+      type: Object,
+      default() {
+        return {};
+      },
+    },
   },
   name: 'CardItem',
   data() {

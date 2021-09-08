@@ -4,7 +4,7 @@
       v-for="item in filterByName === '' ? items : filteredCards"
       :key="item.id"
       :item="item"
-      @delete-card="$emit('delete-card', item.id)"
+      @delete-card="$emit('delete-card', item)"
       @edit-card="edited"
     />
   </div>

@@ -13,7 +13,6 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    headerTitle: 'Тестовое задание',
     optionValues: ['RUED', 'RUEX', 'RUSG'],
     items: [],
     filterByName: '',
@@ -35,7 +34,6 @@ export default new Vuex.Store({
   getters: {
     /* eslint-disable */
     items: (state) => state.items,
-    headerTitle: (state) => state.headerTitle,
     optionValues: (state) => state.optionValues,
     filterByName: (state) => state.filterByName,
     filteredCards: (state) => state.filteredCards,
@@ -47,10 +45,10 @@ export default new Vuex.Store({
     [ADD_CARD]: (state, payload) => state.items.push(payload),
     [DELETE_CARD]: (state, payload) => {
       if (state.filterByName === '') {
-        state.items = state.items.filter((item) => item.id !== payload);
+        state.items = state.items.filter((item) => item.id !== payload.id);
       } else {
-        state.items = state.items.filter((item) => item.id !== payload);
-        state.filteredCards = state.filteredCards.filter((item) => item.id !== payload);
+        state.items = state.items.filter((item) => item.id !== payload.id);
+        state.filteredCards = state.filteredCards.filter((item) => item.id !== payload.id);
       }
     },
     [SORTING_CARDS]: (state, payload) => {

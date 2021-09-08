@@ -43,8 +43,8 @@ export default {
     TableIcon,
   },
   methods: {
-    deleteCard(idToDelete) {
-      this.$store.commit('DELETE_CARD', idToDelete);
+    deleteCard(item) {
+      this.$store.commit('DELETE_CARD', item);
     },
   },
 };
