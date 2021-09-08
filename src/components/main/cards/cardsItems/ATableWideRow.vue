@@ -4,15 +4,8 @@
     @mouseleave="removeExtRowHoverClass"
     class="a-table-row-wide"
   >
-    <td
-      :colspan="headers.length"
-      class="no-info"
-      v-if="component"
-    >
-      <component
-        :is="component"
-        :extData="extData"
-      ></component>
+    <td :colspan="headers.length" class="no-info" v-if="component">
+      <component :is="component" :extData="extData"></component>
     </td>
   </tr>
 </template>

@@ -28,8 +28,7 @@ export default {
   props: {
     item: {
       type: Object,
-      default: () => {
-      },
+      default: () => {},
     },
     headers: {
       type: Array,
@@ -37,8 +36,7 @@ export default {
     },
     actionClick: {
       type: Function,
-      default() {
-      },
+      default() {},
     },
   },
 

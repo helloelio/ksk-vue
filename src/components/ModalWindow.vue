@@ -3,12 +3,11 @@
     <div
       class="modal-edit hidden"
       v-if="readyToEdit === 'ready'"
-      :class="{ 'shown-edit-modal': readyToEdit === 'ready' }">
+      :class="{ 'shown-edit-modal': readyToEdit === 'ready' }"
+    >
       <div class="modal-edit__content">
         <div class="modal-edit__title">Редактирование</div>
-        <form
-          action="#"
-          class="edit-card-form">
+        <form action="#" class="edit-card-form">
           <label for="edit-card-number">Номер накладной </label>
           <input
             id="edit-card-number"
@@ -17,42 +16,30 @@
             v-model="setNewCardName"
           />
           <label for="edit-select">Тип заказа </label>
-          <select
-            id="edit-select"
-            v-model="setNewCardType"
-          >
+          <select id="edit-select" v-model="setNewCardType">
             <option disabled value="">Выберите тип:</option>
-            <option
-              v-for="value in optionValues"
-              :key="value"
-              :value="value"
-            > {{ value }}
+            <option v-for="value in optionValues" :key="value" :value="value">
+              {{ value }}
             </option>
           </select>
         </form>
         <div class="modal-buttons">
-          <button
-            class="edit-card"
-            @click="editCard"
-          >Редактировать
-          </button>
-          <button
-            class="close-modal"
-            @click="$emit('close-edit-modal')"
-          >Отмена
+          <button class="edit-card" @click="editCard">Редактировать</button>
+          <button class="close-modal" @click="$emit('close-edit-modal')">
+            Отмена
           </button>
         </div>
       </div>
     </div>
     <!--    ########################    -->
     <div
-      class="modal hidden" v-else-if="readyToEdit === 'notReady'"
-      :class="{ 'shown-create-modal': readyToEdit === 'notReady' }">
+      class="modal hidden"
+      v-else-if="readyToEdit === 'notReady'"
+      :class="{ 'shown-create-modal': readyToEdit === 'notReady' }"
+    >
       <div class="modal__content">
         <div class="modal__title">Добавление</div>
-        <form
-          action="#"
-          class="create-new-card">
+        <form action="#" class="create-new-card">
           <label for="card-number">Номер накладной </label>
           <input
             id="card-number"
@@ -61,26 +48,17 @@
             v-model="cardName"
           />
           <label for="create-select">Тип заказа </label>
-          <select
-            id="create-select"
-            v-model="cardType">
+          <select id="create-select" v-model="cardType">
             <option disabled value="">Выберите тип:</option>
-            <option
-              v-for="value in optionValues"
-              :key="value"
-              :value="value">
+            <option v-for="value in optionValues" :key="value" :value="value">
               {{ value }}
             </option>
           </select>
         </form>
         <div class="modal-buttons">
-          <button
-            @click="createCardItem"
-            class="create-card">Добавить
-          </button>
-          <button
-            @click="$emit('close-create-modal')"
-            class="close-modal">Отмена
+          <button @click="createCardItem" class="create-card">Добавить</button>
+          <button @click="$emit('close-create-modal')" class="close-modal">
+            Отмена
           </button>
         </div>
       </div>
@@ -232,7 +210,7 @@ export default {
   background-color: white;
   color: black;
   border: 1px solid white;
-  transition: border .2s ease;
+  transition: border 0.2s ease;
 }
 
 .close-modal:hover {
@@ -289,5 +267,4 @@ export default {
 .edit-card-form {
   margin-bottom: 10px;
 }
-
 </style>

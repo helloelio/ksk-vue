@@ -14,8 +14,6 @@ import { mapGetters } from 'vuex';
 import ATable from './cardsItems/ATable.vue';
 import TableExtRowComponent from '../../../../stubs/components/TableExtRowComponent.vue';
 import TableCustomCellActions from '../../../../stubs/components/TableCustomCellActions.vue';
-// import TableCustomHeader from '../../../../stubs/components/TableCustomHeader.vue';
-// import TableCustomCell from '../stubs/components/TableCustomCell.vue';
 
 export default {
   components: { ATable },

@@ -1,6 +1,6 @@
 <template>
   <header class="header">
-    <h1 class="header__title"> {{ headerTitle }} </h1>
+    <h1 class="header__title">{{ headerTitle }}</h1>
   </header>
 </template>
 
@@ -42,5 +42,4 @@ export default {
   color: #ffffff;
   margin-left: 110px;
 }
-
 </style>

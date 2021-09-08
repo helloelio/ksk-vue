@@ -67,8 +67,7 @@ export default {
     },
     actionClick: {
       type: Function,
-      default() {
-      },
+      default() {},
     },
     useExtRowComponent: {
       type: Object,
@@ -78,8 +77,7 @@ export default {
     },
     getRowClassesByItem: {
       type: Function,
-      default() {
-      },
+      default() {},
     },
   },
 
@@ -113,7 +111,7 @@ export default {
 };
 </script>
 
-<style lang='scss'>
+<style lang="scss">
 @import "../../../../font-awesome/css/font-awesome.min.css";
 
 $rowBgColor: #fff;
